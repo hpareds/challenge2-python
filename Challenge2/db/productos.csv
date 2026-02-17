@@ -1,0 +1,7 @@
+id,nombre,precio,stock,id_categoria,activo
+1,Coca Cola 2L,2.50,15,1,True
+2,Papas Fritas,1.25,0,2,True
+3,Detergente,3.75,10,3,True
+4,Agua Mineral,0.60,50,1,True
+5,Coca de lata,0.60,12,1,False
+6,Jugo Naranja,1.50,10,1,True
