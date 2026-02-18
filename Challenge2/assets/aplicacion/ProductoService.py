@@ -26,7 +26,7 @@ class ProductoService:
     def desactivar_producto(self, id): #desactiva un producto
         for producto in self.repository.obtener_todos():
             if producto.id == id:
-                producto.activo = "False"
+                producto.activo = "False" # asignar comom falso 
                 self.repository.actualizar(producto)
                 return True
         return False

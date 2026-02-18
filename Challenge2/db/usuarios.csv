@@ -3,4 +3,6 @@ id,nombres,apellidos,username,password,rol,primer_ingreso
 2,Juan,Pérez López,PL2,paredes2003,Cliente,False
 3,Ana,García Rivas,GR3,1234,Cliente,False
 4,Pedro,Ramirez,PR4,1234,Administrador,False
-5,Aliss,Roque,AL5,admin777,Cliente,True
+5,Aliss,Roque,AL5,admin123,Cliente,False
+6,Juan,Carlos,JU6,4321,Cliente,False
+7,Jose,Ramirez,JO7,cliente1234,Cliente,False

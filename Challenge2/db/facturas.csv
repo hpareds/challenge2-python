@@ -1,1 +1,8 @@
-id,fecha,id_cliente,total
+id,fecha,id_cliente,total,items
+1,2026-02-17 14:53:06,6,3.3,Jugo Naranja (x1) | Agua Mineral (x3)
+2,2026-02-17 15:30:07,6,11.0,Coca Cola 2L (x2) | Agua Mineral (x10)
+3,2026-02-17 15:30:30,6,7.5,Detergente (x2)
+4,2026-02-17 15:31:31,6,26.15,Coca Cola 2L (x2) | Detergente (x5) | Agua Mineral (x4)
+5,2026-02-17 17:02:29,5,11.25,Detergente (x1) | Kolashampan roja (x5)
+6,2026-02-17 20:11:05,5,8.0,Coca Cola 2L (x2) | Agua Mineral (x5)
+7,2026-02-17 20:24:05,7,2.6,Tostecas (x4) | Fanta (x2)

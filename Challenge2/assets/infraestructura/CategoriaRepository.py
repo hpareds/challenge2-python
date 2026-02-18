@@ -1,36 +1,29 @@
 import csv
 import os
-import sys
-
-# Agregamos la carpeta raíz del proyecto al path de Python si se ejecuta directamente
-if __name__ == "__main__":
-    root_path = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-    if root_path not in sys.path:
-        sys.path.insert(0, root_path)
 
 from assets.dominio.Categoria import Categoria
 
-class CategoriaRepository:
+class CategoriaRepository: # Clase que maneja el repositorio de categorias
     def __init__(self, file_path):
         self.file_path = file_path
         self.categorias = []
         self.cargar_categorias()
 
-    def cargar_categorias(self):
+    def cargar_categorias(self): # Carga las categorias desde el archivo
         if not os.path.exists(self.file_path):
             return
 
         with open(self.file_path, 'r') as file:
             reader = csv.reader(file)
-            next(reader, None) # Skip header
+            next(reader, None) # Salta la primera fila osea el encabezado
             for row in reader:
                 if row:
                     self.categorias.append(Categoria(*row))
 
-    def obtener_todos(self):
+    def obtener_todos(self): # Obtiene todas las categorias
         return self.categorias
 
-    def obtener_por_id(self, id):
+    def obtener_por_id(self, id): # Obtiene una categoria por id
         for c in self.categorias:
             if c.id == str(id):
                  return c

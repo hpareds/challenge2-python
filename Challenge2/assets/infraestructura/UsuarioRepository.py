@@ -1,12 +1,5 @@
 import csv
-import sys
 import os
-
-# Agregamos la carpeta raíz del proyecto al path de Python si se ejecuta directamente
-if __name__ == "__main__":
-    root_path = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-    if root_path not in sys.path:
-        sys.path.insert(0, root_path)
 
 from assets.dominio.Usuario import Usuario
 
@@ -51,22 +44,8 @@ class UsuarioRepository:
         for i, u in enumerate(self.usuarios): #Recorre la lista de usuarios
             if u.id == usuario.id: #Compara el id del usuario con el id proporcionado
                 self.usuarios[i] = usuario
-                self.guardar_usuarios()
                 return True
         return False
 
-# Bloque de prueba
-if __name__ == "__main__":
-    # Ruta relativa desde la raíz del proyecto, asumiendo que el script ajustó el path
-    # Pero para cargar el archivo, necesitamos la ruta correcta relativa a donde se ejecuta o absoluta
-    # Si ejecutamos este archivo directamente, la ruta 'db/usuarios.csv' debe ser relativa a CWD (Challenge2)
-    # Como el CWD es Challenge2, funcionará.
-    
-    try:
-        repo = UsuarioRepository("db/usuarios.csv")
-        print("\n--- Usuarios Cargados ---")
-        for u in repo.obtener_todos():
-            print(f"User: {u.username}, Rol: {u.rol}, Nombre: {u.nombres}")
-    except Exception as e:
-        print(f"Error cargando usuarios: {e}")
+
 

@@ -1,12 +1,5 @@
 import csv
 import os
-import sys
-
-# Agregamos la carpeta raíz del proyecto al path de Python si se ejecuta directamente
-if __name__ == "__main__":
-    root_path = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-    if root_path not in sys.path:
-        sys.path.insert(0, root_path)
 
 from assets.dominio.Producto import Producto
 
@@ -16,35 +9,35 @@ class ProductoRepository:
         self.productos = []
         self.cargar_productos()
 
-    def cargar_productos(self):
+    def cargar_productos(self): # Carga los productos desde el archivo
         if not os.path.exists(self.file_path):
-            with open(self.file_path, 'w', newline='') as file:
+            with open(self.file_path, 'w', newline='') as file: # escribe en el archivo 
                 writer = csv.writer(file)
                 writer.writerow(['id', 'nombre', 'precio', 'stock', 'id_categoria', 'activo'])
             return
 
-        with open(self.file_path, 'r') as file:
+        with open(self.file_path, 'r') as file: # Lee el archivo
             reader = csv.reader(file)
-            next(reader, None) # Skip header
+            next(reader, None) 
             for row in reader:
                 if row:
                     self.productos.append(Producto(*row))
 
-    def guardar_productos(self):
+    def guardar_productos(self): # Guarda los productos en el archivo
         with open(self.file_path, 'w', newline='') as file:
             writer = csv.writer(file)
-            writer.writerow(['id', 'nombre', 'precio', 'stock', 'id_categoria', 'activo'])
+            writer.writerow(['id', 'nombre', 'precio', 'stock', 'id_categoria', 'activo']) # encabezado
             for p in self.productos:
-                writer.writerow([p.id, p.nombre, p.precio, p.stock, p.id_categoria, p.activo])
+                writer.writerow([p.id, p.nombre, p.precio, p.stock, p.id_categoria, p.activo]) # escribe en el archivo
 
-    def obtener_todos(self):
+    def obtener_todos(self): # Obtiene todos los productos
         return self.productos
 
-    def agregar(self, producto):
+    def agregar(self, producto): # Agrega un producto
         self.productos.append(producto)
         self.guardar_productos()
 
-    def actualizar(self, producto):
+    def actualizar(self, producto): # Actualiza un producto
         for i, p in enumerate(self.productos):
             if p.id == producto.id:
                 self.productos[i] = producto
@@ -52,7 +45,7 @@ class ProductoRepository:
                 return True
         return False
 
-    def eliminar(self, id):
+    def eliminar(self, id): # Elimina un producto
         for i, p in enumerate(self.productos):
             if p.id == id:
                 del self.productos[i]
